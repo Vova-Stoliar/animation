@@ -61,7 +61,6 @@ const App = styled(({ className }) => {
             position: absolute;
             width: fit-content;
             height: 700px;
-            transform: scale(1.5);
             top: 200px;
         }
 

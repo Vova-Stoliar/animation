@@ -4,7 +4,7 @@ import Spline from '@splinetool/react-spline';
 import styled from 'styled-components';
 import { NavBar } from './components/NavBar';
 import { Description } from './components/Description';
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { useWindowSize } from '@uidotdev/usehooks';
 
 const Title = styled.p`
@@ -24,7 +24,7 @@ const App = styled(({ className }) => {
     const size = useWindowSize();
     const { width } = size;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (width <= 375) {
             splineApp?.setZoom(0.3);
         } else if (width <= 540) {

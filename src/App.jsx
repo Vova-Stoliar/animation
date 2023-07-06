@@ -4,7 +4,8 @@ import Spline from '@splinetool/react-spline';
 import styled from 'styled-components';
 import { NavBar } from './components/NavBar';
 import { Description } from './components/Description';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useWindowSize } from '@uidotdev/usehooks';
 
 const Title = styled.p`
     color: var(--black, #1b1b1b);
@@ -19,6 +20,24 @@ const Title = styled.p`
 `;
 
 const App = styled(({ className }) => {
+    const [splineApp, setSplineApp] = useState(null);
+    const size = useWindowSize();
+    const { width } = size;
+
+    useEffect(() => {
+        if (width <= 375) {
+            splineApp?.setZoom(0.3);
+        } else if (width <= 540) {
+            splineApp?.setZoom(0.35);
+        } else if (width <= 768) {
+            splineApp?.setZoom(0.5);
+        } else if (width <= 1024) {
+            splineApp?.setZoom(0.6);
+        } else if (width <= 1180) {
+            splineApp?.setZoom(0.75);
+        }
+    }, [splineApp, width]);
+
     return (
         <div className={className}>
             <div className="app">
@@ -30,8 +49,11 @@ const App = styled(({ className }) => {
                     <div className="app__space" />
                     <div className="app__container">
                         <Spline
-                            scene="https://prod.spline.design/GKlhbugkdOsPEjPK/scene.splinecode"
+                            scene="https://prod.spline.design/QWCrbynwrTk1EveC/scene.splinecode"
                             className="app__ball"
+                            onLoad={(spline) => {
+                                setSplineApp(spline);
+                            }}
                         />
                     </div>
                 </div>
@@ -62,52 +84,26 @@ const App = styled(({ className }) => {
 
         &__ball {
             position: relative;
-
-            @media (max-width: 1180px) {
-                transform: scale(0.4);
-                right: 350px;
-            }
-
-            @media (max-width: 768px) {
-                transform: scale(0.4);
-                right: 300px;
-            }
-
-            @media (max-width: 540px) {
-                transform: scale(0.3);
-                right: 230px;
-            }
-
-            @media (max-width: 375px) {
-                transform: scale(0.27);
-                right: 180px;
-            }
         }
 
         &__container {
             position: absolute;
-            top: -380px;
-            left: -120px;
+            left: -230px;
             right: 0;
             bottom: 0;
-
+            top: 0;
             overflow: hidden;
 
-            @media (max-width: 1180px) {
-                left: 0;
-                top: -700px;
-            }
-
-            @media (max-width: 1024px) {
-                top: -600px;
-            }
-
             @media (max-width: 768px) {
-                top: -650px;
+                left: -40px;
             }
 
             @media (max-width: 540px) {
-                top: -450px;
+                left: -30px;
+            }
+
+            @media (max-width: 375px) {
+                left: -20px;
             }
         }
 

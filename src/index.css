@@ -365,6 +365,9 @@ body {
         'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    overflow-x: hidden;
+    /*background-color: #e8b610;*/
 }
 
 code {

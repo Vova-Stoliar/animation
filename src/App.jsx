@@ -22,14 +22,17 @@ const App = styled(({ className }) => {
     return (
         <div className={className}>
             <div className="app">
-                <div>
+                <div className="app__wrapper">
                     <div className="app__nav">
                         <NavBar />
                     </div>
 
                     <div className="app__space" />
                     <div className="app__container">
-                        <Spline scene="https://prod.spline.design/ADeub0q6Ekj9p9PJ/scene.splinecode" />
+                        <Spline
+                            scene="https://prod.spline.design/GKlhbugkdOsPEjPK/scene.splinecode"
+                            className="app__ball"
+                        />
                     </div>
                 </div>
 
@@ -57,11 +60,58 @@ const App = styled(({ className }) => {
         justify-content: space-between;
         background-color: #e8b610;
 
+        &__ball {
+            position: relative;
+
+            @media (max-width: 1180px) {
+                transform: scale(0.4);
+                right: 350px;
+            }
+
+            @media (max-width: 768px) {
+                transform: scale(0.4);
+                right: 300px;
+            }
+
+            @media (max-width: 540px) {
+                transform: scale(0.3);
+                right: 230px;
+            }
+
+            @media (max-width: 375px) {
+                transform: scale(0.27);
+                right: 180px;
+            }
+        }
+
         &__container {
             position: absolute;
-            width: fit-content;
-            height: 700px;
-            top: 200px;
+            top: -380px;
+            left: -120px;
+            right: 0;
+            bottom: 0;
+
+            overflow: hidden;
+
+            @media (max-width: 1180px) {
+                left: 0;
+                top: -700px;
+            }
+
+            @media (max-width: 768px) {
+                top: -650px;
+            }
+
+            @media (max-width: 540px) {
+                top: -450px;
+            }
+        }
+
+        &__wrapper {
+            max-width: 1405px;
+            margin: 0 auto;
+            width: 100%;
+            background-color: #e8b610;
         }
 
         &__space {
@@ -69,12 +119,9 @@ const App = styled(({ className }) => {
         }
 
         &__nav {
-            max-width: 1405px;
-            margin: 0 auto;
-            padding: 30px;
-
             position: relative;
             z-index: 1;
+            padding: 30px;
 
             @media (max-width: 768px) {
                 padding: 10px 20px;

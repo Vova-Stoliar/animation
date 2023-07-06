@@ -98,6 +98,10 @@ const App = styled(({ className }) => {
                 top: -700px;
             }
 
+            @media (max-width: 1024px) {
+                top: -600px;
+            }
+
             @media (max-width: 768px) {
                 top: -650px;
             }
@@ -115,7 +119,11 @@ const App = styled(({ className }) => {
         }
 
         &__space {
-            min-height: 500px;
+            min-height: 610px;
+
+            @media (max-width: 1180px) {
+                min-height: 500px;
+            }
         }
 
         &__nav {

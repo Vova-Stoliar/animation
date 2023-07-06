@@ -36,7 +36,7 @@ const App = styled(({ className }) => {
         } else if (width <= 1180) {
             splineApp?.setZoom(0.75);
         }
-    }, [splineApp, width]);
+    }, [splineApp]);
 
     return (
         <div className={className}>
